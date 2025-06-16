@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<>, initial-scale=1.0">
+    <title>заявки</title>
+</head>
+<body>
+    <table>
+      <tr> 
+        <th>номер</th>
+        <th>дата добавления</th>
+        <th>оборудование</th>
+        <th>тип проблемы</th>
+        <th>описание</th>
+        <th>клиент</th>
+        <th>статус</th>
+        <th>мастер</th>
+      </tr>
+    </table>
+    <script>
+
+        let table = document.querySelector("table");
+        GetOrders();
+
+        async function GetOrders()
+        {
+            
+        
+
+        let response = await fetch("http://localhost:5064/", { method: "GET" });
+        let orders = await response.json();
+
+        orders.forEach(o => {
+           let tr = document.createElement("tr");
+
+           tr.innerHTML =`
+           <td>${o.number}</td>
+           <td>${o.dateTime1}</td>
+           <td>${o.device}</td>
+           <td>${o.problemtype}</td>
+           <td>${o.description}</td>
+           <td>${o.client}</td>
+           <td>${o.status}</td>
+           <td>${o.master}</td>;
+            `
+           
+
+           table.append(tr);
+            
+        });
+
+    }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>добавление заявки</title>
+</head>
+<body>
+    <table>
+      <tr> 
+        <ht>номер</ht>
+        <ht>дата добавления</ht>
+        <ht>оборудование</ht>
+        <ht>тип проблемы</ht>
+        <ht>описание</ht>
+        <ht>клиент</ht>
+        <ht>статус</ht>
+      </tr>
+      <tr>
+        <td><input id="number" placeholder="номер"></td>
+        <td><input id="dateTime" type="date"></td>
+        <td><input id="device" placeholder="оборудование"></td>
+        <td><input id="problemtype" placeholder="тип проблемы"></td>
+        <td><input id="description" placeholder="описание"></td>
+        <td><input id="client" placeholder="клиент"></td>
+        <td>
+           <select id="status">
+             <option>в ожидании</option>
+             <option>в работе</option>
+             <option>выполнено</option>
+        </td>   
+        <td><input id="save" value="сохранить" type="button" onclick="addOrder()"/></td> 
+      </tr>
+    </table>
+    <script>
+        async function addOrder() {
+           await fetch("http://localhost:5064/",
+           {
+                method: "POST",
+                headers: { "Content-Type" : "application/json"},
+                body: JSON.stringify({
+                    Number : document.getElementById("number").value,
+                    DateTime : document.getElementById("dateTime").value,
+                    Device : document.getElementById("device").value,
+                    Problemtype : document.getElementById("problemtype").value,
+                    Description : document.getElementById("description").value,
+                    Client : document.getElementById("client").value,
+                    Status : document.getElementById("status").value
+                })
+           })
+        };
+        
+    </script>
+</body>
+</html>

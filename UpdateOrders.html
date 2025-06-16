@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>обновить заявку</title>
+</head>
+<body>
+    <table>
+        <tr> 
+        <ht>описание</ht>
+        <ht>мастер</ht>
+        <ht>статус</ht>
+        <ht>комментарий</ht>
+      </tr>
+    </table>
+
+        <tr>
+        <td><input id="number" placeholder="номер"></td>
+        <td><input id="description" placeholder="описание"></td>
+        <td><input id="мастер" placeholder="мастер"></td>
+        <td>
+           <select id="status">
+             <option>не выполнено</option>
+             <option>в работе</option>
+             <option>выполнено</option>
+        </td>   
+        <td><input id="comment" placeholder="комментарий"/></td> 
+        <td><input id="save" value="сохранить" type="bottom"/></td> 
+      </tr>
+    <script>
+        document.getElementById("save").onclick = async () => {
+         let order = {
+            number : document.getElementById("number").value,
+            description : document.getElementById("description").value,
+            master : document.getElementById("master").value,
+            status : document.getElementById("status").value,
+            Comment : 
+
+           };
+
+           fatch("http://localhost:5064/",)
+           {
+               method: "POST",
+                    headers; { "Content-Type" ; "application/json"}
+                body: order
+           }
+        };
+    </script>
+</body>
+</html>
